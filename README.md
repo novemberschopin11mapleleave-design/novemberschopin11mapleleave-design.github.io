@@ -104,7 +104,8 @@ python -m http.server 8000
 
 ### 2. 项目链接
 
-- 规则批改演示：`demo/writing-lab/marking.html`
+- 规则批改演示（完整站）：<https://novemberschopin11mapleleave-design.github.io/dsewritinglab/marking.html>
+- 完整站仓库：<https://github.com/novemberschopin11mapleleave-design/dsewritinglab>
 - Skill 仓库：<https://github.com/novemberschopin11mapleleave-design/dse-writing-polish-skill>
 
 如果之后把 DSE Writing Lab 的独立部署地址公开，更新项目卡片的「打开完整演示」链接。**在真实接入 LLM 之前，不要改掉 `NO LLM` / `RULE-BASED` 标签，也不要在 `marking.js` 里恢复 AI 调用。**
