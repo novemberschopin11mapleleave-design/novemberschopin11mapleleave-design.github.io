@@ -1,5 +1,8 @@
 # 张文昕 · AI Agent Portfolio 2026
 
+**Live site:** <https://novemberschopin11mapleleave-design.github.io/>  
+**Repository:** <https://github.com/novemberschopin11mapleleave-design/novemberschopin11mapleleave-design.github.io>
+
 四章式单页作品集：**暗色 Agent 控制台 + 浅色作品集档案**。视觉上把参考图的纸感编辑排版，和另一版参考里的终端 / 状态标签 / 霓虹紫 / 扫描线结合起来；全站手写 HTML / CSS / JS，无构建步骤。
 
 > 定位：**AI Agent 开发实习**。当前证据是 AI 应用前端原型与公开的 Agent Skill 规范；尚未实现生产级 Agent、LLM 服务、RAG 或自动评分。
