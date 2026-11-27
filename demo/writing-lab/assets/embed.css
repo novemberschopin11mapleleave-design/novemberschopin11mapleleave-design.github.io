@@ -1,0 +1,306 @@
+/* Compact embed layer for the DSE Writing Lab demo inside the portfolio. */
+
+body.embed {
+  background: #09070f;
+  min-width: 0;
+}
+
+body.embed::before,
+body.embed::after {
+  display: none;
+}
+
+body.embed header,
+body.embed footer,
+body.embed .sample-box {
+  display: none;
+}
+
+body.embed .marking-wrap {
+  width: calc(100% - 22px);
+  max-width: 100%;
+}
+
+.embed-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 1px;
+  border-bottom: 1px solid var(--line);
+  color: var(--subtle);
+  font-family: Consolas, ui-monospace, monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+}
+
+.embed-banner b {
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.embed-banner span:last-child {
+  color: var(--gold);
+  text-align: right;
+}
+
+body.embed .mark-hero {
+  padding: 11px 0 9px;
+}
+
+body.embed .eyebrow {
+  margin-bottom: 2px;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+}
+
+body.embed .eyebrow i {
+  width: 5px;
+  height: 5px;
+  box-shadow: 0 0 0 3px rgba(196, 167, 255, 0.1), 0 0 12px rgba(196, 167, 255, 0.6);
+}
+
+body.embed .mark-hero h1 {
+  margin-top: 3px;
+  font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+body.embed .mark-hero p {
+  max-width: 72em;
+  margin-top: 5px;
+  color: var(--subtle);
+  font-size: 0.7rem;
+  line-height: 1.55;
+}
+
+body.embed .dse-tags {
+  display: none;
+}
+
+body.embed .mark-actions {
+  gap: 5px;
+  margin-top: 8px;
+}
+
+body.embed .style-pick {
+  gap: 4px;
+  font-size: 0.6rem;
+}
+
+body.embed .style-pick select {
+  padding: 4px 6px;
+  border-radius: 6px;
+  font-size: 0.62rem;
+}
+
+body.embed .btn {
+  border-radius: 7px;
+  padding: 6px 9px;
+  font-size: 0.64rem;
+}
+
+body.embed .btn.small {
+  padding: 5px 8px;
+  font-size: 0.6rem;
+}
+
+body.embed .mark-actions .meta {
+  margin-left: 2px;
+  font-size: 0.58rem;
+}
+
+body.embed .mark-grid {
+  grid-template-columns: 1fr 1fr 0.95fr 0.85fr;
+  gap: 7px;
+  padding: 8px 0 12px;
+}
+
+body.embed .pane {
+  min-height: 420px;
+  padding: 9px;
+  border-radius: 10px;
+}
+
+body.embed .pane-head {
+  margin-bottom: 6px;
+}
+
+body.embed .pane-head h2 {
+  font-size: 0.72rem;
+}
+
+body.embed .pane-head .meta {
+  font-size: 0.52rem;
+}
+
+body.embed .pane textarea {
+  height: 356px;
+  min-height: 356px;
+  font-size: 0.68rem;
+  line-height: 1.65;
+}
+
+body.embed .polished {
+  min-height: 356px;
+  max-height: 356px;
+  font-size: 0.68rem;
+  line-height: 1.65;
+}
+
+body.embed .polished p {
+  margin-bottom: 8px;
+}
+
+body.embed .feedback,
+body.embed .para-list {
+  max-height: 356px;
+}
+
+body.embed .legend {
+  gap: 8px;
+  margin-top: 7px;
+  padding-top: 7px;
+  font-size: 0.52rem;
+}
+
+body.embed .fb-block h3 {
+  font-size: 0.56rem;
+}
+
+body.embed .fb-row {
+  padding: 5px 0;
+  font-size: 0.62rem;
+  line-height: 1.5;
+}
+
+body.embed .fb-row code {
+  font-size: 0.58rem;
+}
+
+body.embed .fb-row .why {
+  font-size: 0.54rem;
+}
+
+body.embed .pattern {
+  padding: 6px 7px;
+  font-size: 0.6rem;
+}
+
+body.embed .pattern b {
+  font-size: 0.62rem;
+}
+
+body.embed .pattern .tmpl,
+body.embed .pattern .ex,
+body.embed .pattern .why {
+  font-size: 0.56rem;
+}
+
+body.embed .para-row {
+  padding: 6px 0;
+}
+
+body.embed .para-from code,
+body.embed .chip {
+  font-size: 0.58rem;
+}
+
+body.embed .para-from span,
+body.embed .para-why,
+body.embed .save-word {
+  font-size: 0.52rem;
+}
+
+body.embed .word-pop {
+  z-index: 300;
+}
+
+.embed-hint {
+  display: none;
+}
+
+@media (max-width: 1049px) {
+  body.embed .mark-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  body.embed .pane {
+    min-height: 360px;
+  }
+
+  body.embed .pane textarea,
+  body.embed .polished,
+  body.embed .feedback,
+  body.embed .para-list {
+    min-height: 300px;
+    height: 300px;
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 760px) {
+  body.embed .marking-wrap {
+    width: calc(100% - 18px);
+  }
+
+  .embed-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 6px 0 0;
+    color: var(--subtle);
+    font-family: Consolas, ui-monospace, monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.04em;
+  }
+
+  body.embed .mark-hero {
+    padding: 9px 0 7px;
+  }
+
+  body.embed .mark-hero h1 {
+    font-size: 1.3rem;
+  }
+
+  body.embed .mark-hero p {
+    font-size: 0.64rem;
+  }
+
+  body.embed .mark-grid {
+    display: flex;
+    gap: 7px;
+    padding: 6px 0 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body.embed .pane {
+    flex: 0 0 86%;
+    min-height: 415px;
+    scroll-snap-align: start;
+  }
+
+  body.embed .pane textarea,
+  body.embed .polished,
+  body.embed .feedback,
+  body.embed .para-list {
+    height: 300px;
+    min-height: 300px;
+    max-height: 300px;
+  }
+
+  body.embed .embed-banner {
+    font-size: 0.48rem;
+  }
+
+  body.embed .embed-banner span:last-child {
+    max-width: 14em;
+  }
+}

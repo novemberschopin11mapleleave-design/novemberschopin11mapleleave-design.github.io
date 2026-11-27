@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DSE 写作批改台 · 交互演示 | DSE Writing Lab</title>
+<meta name="description" content="DSE Writing Lab 规则批改前端演示：编辑作文、切换文体与批改强度，即时查看改写、批注和替换词。示例文本，未调用模型。">
+<link rel="stylesheet" href="./assets/styles.css">
+<link rel="stylesheet" href="./assets/marking.css">
+<link rel="stylesheet" href="./assets/embed.css">
+</head>
+<body class="embed">
+<main class="wrap marking-wrap">
+  <div class="embed-banner">
+    <span><b>DSE Writing Lab</b> / HKDSE PAPER 2</span>
+    <span>RULE-BASED · SAMPLE TEXT · NO LLM</span>
+  </div>
+  <p class="embed-hint">← 横向滑动查看 原文 / 改写 / 批改 / 替换词 →</p>
+
+  <section class="mark-hero">
+    <div class="eyebrow"><i></i>HKDSE English · Paper 2 · Rules Demo</div>
+    <h1>DSE 写作批改台</h1>
+    <p>这是 DSE Writing Lab 的规则批改前端演示。直接编辑左侧作文、切换文体与批改强度，下方会即时生成改写版、批注和替换词。示例文本，未调用模型。</p>
+    <div class="mark-actions">
+      <label class="style-pick">文体
+        <select id="genre">
+          <option value="article" selected>Article</option>
+          <option value="letter">Letter to Editor</option>
+          <option value="proposal">Proposal</option>
+          <option value="report">Report</option>
+          <option value="speech">Speech</option>
+          <option value="blog">Blog</option>
+          <option value="email">Email</option>
+        </select>
+      </label>
+      <label class="style-pick">批改强度
+        <select id="style">
+          <option value="clear">基础 Clear</option>
+          <option value="academic" selected>学术 Academic</option>
+          <option value="rhetorical">修辞 Rhetorical</option>
+        </select>
+      </label>
+      <button class="btn small" id="loadSample">载入测试篇章</button>
+      <button class="btn small" id="clearAll">清空</button>
+      <button class="btn primary" id="copyPolished">复制改写版</button>
+      <span class="meta" id="status"></span>
+    </div>
+  </section>
+
+  <section class="mark-grid">
+    <article class="pane">
+      <div class="pane-head"><h2>原文 Original</h2><span class="meta" id="sourceMeta">0 words</span></div>
+      <textarea id="source" spellcheck="false" placeholder="把学生 DSE Paper 2 作文贴在这里…"></textarea>
+    </article>
+
+    <article class="pane">
+      <div class="pane-head"><h2>改写版 Polished</h2><span class="meta">紫色 = 升级 · 金色 = 修正</span></div>
+      <div class="polished" id="polished" aria-live="polite"></div>
+      <div class="legend">
+        <span><i class="sw fix"></i>语法修正</span>
+        <span><i class="sw up"></i>词汇 / 句式升级</span>
+      </div>
+    </article>
+
+    <aside class="pane feedback-pane">
+      <div class="pane-head"><h2>批改详情</h2><span class="meta" id="changeCount">0 处</span></div>
+      <div class="feedback" id="feedback"></div>
+    </aside>
+
+    <aside class="pane paraphrase-pane">
+      <div class="pane-head"><h2>替换词 Paraphrase</h2><span class="meta">点词复制</span></div>
+      <div class="para-list" id="paraphrase"></div>
+    </aside>
+  </section>
+
+  <section class="sample-box" aria-hidden="true">
+    <details>
+      <summary>测试篇章</summary>
+      <pre id="sampleText"></pre>
+      <button class="btn small" id="copySample">复制测试篇章</button>
+    </details>
+  </section>
+</main>
+
+<script src="./assets/marking-data.js"></script>
+<script src="./assets/marking.js"></script>
+</body>
+</html>

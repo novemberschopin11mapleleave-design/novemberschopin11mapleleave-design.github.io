@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>张文昕 Wenxin Zhang — AI Agent / Applied Mathematics</title>
+  <meta name="description" content="张文昕，香港科技大学应用数学二年级，投递 AI Agent 开发。做 AI 应用原型与 Agent Skill 工作流：DSE Writing Lab 规则版交互批改演示、DSE Writing Polish 公开 Skill 规范。">
+  <meta name="theme-color" content="#08070c">
+  <meta name="color-scheme" content="dark light">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:title" content="张文昕 Wenxin Zhang — AI Agent / Applied Mathematics">
+  <meta property="og:description" content="把模糊任务拆成 Agent 能执行的步骤。AI 应用原型、Agent Skill 工作流与模型约束设计。">
+  <meta property="og:image" content="assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Manrope:wght@300;400;500;600;700&amp;family=Noto+Serif+SC:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <noscript>
+    <style>
+      .cover .reveal { opacity: 1; transform: none; }
+    </style>
+  </noscript>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "张文昕",
+    "alternateName": "Wenxin Zhang",
+    "description": "香港科技大学应用数学本科生，关注 AI Agent 工作流、模型约束与 AI 应用原型。",
+    "affiliation": {
+      "@type": "CollegeOrUniversity",
+      "name": "The Hong Kong University of Science and Technology"
+    },
+    "knowsAbout": ["AI Agents", "Prompt Engineering", "Skill Design", "Frontend Prototyping", "Applied Mathematics"],
+    "sameAs": ["https://github.com/novemberschopin11mapleleave-design"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <div class="paper-noise" aria-hidden="true"></div>
+
+  <svg class="svg-defs" aria-hidden="true" focusable="false">
+    <symbol id="star4" viewBox="0 0 100 100">
+      <path fill="currentColor" d="M50 0c2.4 33.8 16.2 47.6 50 50-33.8 2.4-47.6 16.2-50 50-2.4-33.8-16.2-47.6-50-50C33.8 47.6 47.6 33.8 50 0Z"/>
+    </symbol>
+    <symbol id="close-icon" viewBox="0 0 24 24">
+      <path d="M5 5l14 14M19 5 5 19" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+  </svg>
+
+  <aside class="rail" aria-label="页面导航">
+    <a class="rail-brand" href="#cover" aria-label="张文昕，回到首页">
+      <span class="rail-mark">张</span>
+      <span class="rail-name">WENXIN<br>ZHANG</span>
+    </a>
+    <div class="rail-line" aria-hidden="true">
+      <span class="rail-progress" id="railProgress"></span>
+    </div>
+    <nav class="rail-nav">
+      <a href="#cover" data-section="cover" class="is-active">
+        <span class="rail-num">01</span><span class="rail-label">首页</span>
+      </a>
+      <a href="#focus" data-section="focus">
+        <span class="rail-num">02</span><span class="rail-label">方向</span>
+      </a>
+      <a href="#work" data-section="work">
+        <span class="rail-num">03</span><span class="rail-label">项目</span>
+      </a>
+      <a href="#contribute" data-section="contribute">
+        <span class="rail-num">04</span><span class="rail-label">贡献</span>
+      </a>
+    </nav>
+    <div class="rail-foot">
+      <a class="rail-mail" href="mailto:novemberschopin.11.mapleleave@gmail.com">EMAIL</a>
+      <span class="rail-loc">HK / 22.3°N</span>
+    </div>
+  </aside>
+
+  <header class="topbar">
+    <a class="topbar-brand" href="#cover" aria-label="张文昕，回到首页">
+      <b>张文昕</b><span>WENXIN ZHANG</span>
+    </a>
+    <nav class="topbar-nav" aria-label="移动端页面导航">
+      <a href="#cover" data-section="cover" class="is-active" aria-label="首页，01"><b>01</b><span>首页</span></a>
+      <a href="#focus" data-section="focus" aria-label="方向，02"><b>02</b><span>方向</span></a>
+      <a href="#work" data-section="work" aria-label="项目，03"><b>03</b><span>项目</span></a>
+      <a href="#contribute" data-section="contribute" aria-label="贡献，04"><b>04</b><span>贡献</span></a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- 01 / Dark console cover -->
+    <section class="cover" id="cover" data-section="cover" aria-labelledby="cover-title">
+      <div class="cover-scanlines" aria-hidden="true"></div>
+
+      <div class="cover-meta reveal" style="--delay:.02s">
+        <span>Portfolio / 2026</span>
+        <span><b>AI AGENT</b> / WORKFLOW / PROTOTYPE</span>
+        <span>Hong Kong · 22.3375° N</span>
+      </div>
+
+      <div class="cover-body">
+        <div class="cover-copy">
+          <p class="eyebrow reveal" style="--delay:.08s">
+            <span class="eyebrow-dot" aria-hidden="true"></span>
+            Applied Mathematics @ HKUST · Year 2
+          </p>
+
+          <h1 class="cover-title reveal" id="cover-title" style="--delay:.14s">
+            <span class="cover-name-cn">张文昕</span>
+            <span class="cover-name-en" lang="en">Wenxin Zhang</span>
+          </h1>
+
+          <p class="cover-program reveal" style="--delay:.17s">
+            香港科技大学 <span aria-hidden="true">·</span> 应用数学 <span aria-hidden="true">·</span> 二年级
+          </p>
+
+          <p class="cover-lede reveal" style="--delay:.2s">
+            把模糊的任务，拆成 Agent 能执行的步骤；<br>
+            再用边界和验证，让它值得信任。
+          </p>
+          <p class="cover-note reveal" style="--delay:.25s">
+            投递方向：AI Agent 开发。当前作品是 AI 写作产品原型与公开的 Agent Skill 规范。
+          </p>
+
+          <div class="cover-actions reveal" style="--delay:.3s">
+            <a class="btn btn--neon" href="#work">进入作品集</a>
+            <a class="text-link" href="https://github.com/novemberschopin11mapleleave-design" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="mailto:novemberschopin.11.mapleleave@gmail.com">写邮件</a>
+          </div>
+        </div>
+
+        <div class="cover-art reveal" style="--delay:.18s">
+          <div class="art-glow"></div>
+          <div class="art-ring"></div>
+          <div class="art-ring art-ring--soft"></div>
+
+          <svg class="art-orbit" viewBox="0 0 520 560" preserveAspectRatio="none" aria-hidden="true">
+            <ellipse cx="302" cy="282" rx="224" ry="156" transform="rotate(-22 302 282)"/>
+            <ellipse class="orbit-dash" cx="302" cy="282" rx="178" ry="112" transform="rotate(47 302 282)"/>
+            <path class="orbit-accent" d="M34 401c95-122 188-168 309-187 82-13 142 4 176 39"/>
+            <circle cx="343" cy="214" r="3.2" fill="#b7a6ff"/>
+            <circle cx="34" cy="401" r="2.6" fill="#f4f3ef"/>
+          </svg>
+
+          <svg class="star star--a star--white"><use href="#star4"/></svg>
+          <svg class="star star--b"><use href="#star4"/></svg>
+          <svg class="star star--c star--white"><use href="#star4"/></svg>
+          <svg class="star star--d"><use href="#star4"/></svg>
+          <svg class="star star--e"><use href="#star4"/></svg>
+
+          <div class="boot-console" role="group" aria-label="个人状态终端：应用数学二年级；前端原型与 Skill 规范已做；LLM API 与工具调用规划中">
+            <div class="console-bar">
+              <span class="console-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="console-title">build_log / wenxin.profile</span>
+              <span class="console-state">PROTOTYPE</span>
+            </div>
+            <div class="console-body">
+              <p><span class="c-prompt">❯</span> boot --profile wenxin</p>
+              <p><span class="c-ok">[ok]</span> applied_mathematics / hkust / year_2</p>
+              <p><span class="c-ok">[ok]</span> ai_coding_agent / frontend_prototype</p>
+              <p><span class="c-ok">[ok]</span> skill_spec / dse_writing_polish</p>
+              <p><span class="c-next">[--]</span> llm_api / planned</p>
+              <p><span class="c-next">[--]</span> tool_calling / learning</p>
+              <p class="console-gap"><span class="c-prompt">❯</span> status --role "ai agent"</p>
+              <p class="console-status">prototype mode · open to internships<span class="blink">_</span></p>
+            </div>
+            <div class="console-foot">
+              <span>HUMAN DIRECTED</span>
+              <span>AI ASSISTED</span>
+              <span>REV. 2026.11</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cover-foot reveal" style="--delay:.36s">
+        <div class="cover-status">
+          <span><i></i> System: prototype</span>
+          <span><i class="is-amber"></i> Open to AI Agent internships</span>
+          <span><i class="is-blue"></i> Updated 2026.11</span>
+        </div>
+        <a class="scroll-cue" href="#focus" aria-label="向下滚动到方向介绍">
+          <span>Scroll to explore</span>
+          <span class="scroll-line" aria-hidden="true"></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 02 / Focus -->
+    <section class="section focus" id="focus" data-section="focus" aria-labelledby="focus-title">
+      <span class="halftone" aria-hidden="true"></span>
+      <svg class="star star--section" aria-hidden="true"><use href="#star4"/></svg>
+
+      <div class="section-inner">
+        <header class="section-head">
+          <span class="section-index" aria-hidden="true">02</span>
+          <div>
+            <p class="section-kicker">Operator Profile / 方向与方法</p>
+            <h2 id="focus-title">让 Agent 能执行，<br>也让结果能验证。</h2>
+            <p class="section-en" lang="en">Workflow first. Model second.</p>
+          </div>
+        </header>
+
+        <div class="section-body">
+          <div class="focus-intro">
+            <div class="focus-lead">
+              <p>我关心的是 AI Agent 的工作流层：怎样把模糊任务拆成必需的输入、状态和判断节点；怎样把模型行为约束在可检查的边界内；以及怎样用 AI Coding Agent 快速做出可以被人使用的原型。</p>
+              <p>我的底子是应用数学：习惯先定义结构、误差和失败条件。项目还处在原型与规范阶段，我正在补 LLM API、工具调用与评测。</p>
+            </div>
+            <aside class="focus-aside">
+              <svg class="aside-star" aria-hidden="true"><use href="#star4"/></svg>
+              <p>先定义边界，再让模型发挥。</p>
+              <span class="aside-en" lang="en">Constrain first, generate second.</span>
+              <div class="aside-now">
+                <span>Currently going deeper</span>
+                <p>LLM API · tool calling · eval sets</p>
+              </div>
+            </aside>
+          </div>
+
+          <div class="focus-list">
+            <article class="focus-item">
+              <span class="focus-id">01</span>
+              <div class="focus-main">
+                <h3>Agent / Skill 工作流 <span lang="en">Workflow &amp; Skill Design</span></h3>
+                <p>把任务拆成信息确认、上下文、执行步骤、输出契约和人工确认点。公开的 DSE Writing Polish Skill 是一次把写作流程写成可复用指令的练习。</p>
+              </div>
+              <ul class="focus-tags" aria-label="相关主题">
+                <li>Skill Design</li>
+                <li>Prompt Workflow</li>
+                <li>Markdown</li>
+              </ul>
+            </article>
+
+            <article class="focus-item">
+              <span class="focus-id">02</span>
+              <div class="focus-main">
+                <h3>模型约束与可验证输出 <span lang="en">Constraints &amp; Evaluation</span></h3>
+                <p>用行为规则限制模型改事实、编数据或越过评分边界；要求解释修改理由与词汇语境。下一步是把这些约束接进结构化输出和失败样例评测。</p>
+              </div>
+              <ul class="focus-tags" aria-label="相关主题">
+                <li>Behavior Rules</li>
+                <li>Structured Output (next)</li>
+                <li>Evaluation (learning)</li>
+              </ul>
+            </article>
+
+            <article class="focus-item">
+              <span class="focus-id">03</span>
+              <div class="focus-main">
+                <h3>AI 辅助产品工程 <span lang="en">AI-assisted Prototyping</span></h3>
+                <p>用 AI Coding Agent 协作实现前端原型：多栏对照、键盘输入、逐字符比对、LocalStorage 词库；在真实浏览器里验证流程，再决定下一步是否值得接服务端。</p>
+              </div>
+              <ul class="focus-tags" aria-label="相关主题">
+                <li>HTML / CSS / JS</li>
+                <li>DOM &amp; Events</li>
+                <li>LocalStorage</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="scope-note">
+            <span class="scope-label">SCOPE / 当前边界</span>
+            <div>
+              <p><b>已做：</b>前端原型、Skill 规范、AI 协作开发。</p>
+              <p><b>正在补：</b>LLM API、结构化输出、工具调用、基础评测。</p>
+              <p><b>未宣称：</b>生产级 Agent、RAG、自动评分。</p>
+            </div>
+          </div>
+
+          <div class="toolkit">
+            <div class="toolkit-title">
+              <h3>Toolkit / 工具箱</h3>
+              <p>把任务拆清楚、把原型做出来、把边界写进规则；下面是实际用过的工具。</p>
+            </div>
+            <dl class="toolkit-grid">
+              <div>
+                <dt>AI Workflow</dt>
+                <dd>Prompt Engineering · Skill Spec · Behavior Rules · Eval Design（在学）</dd>
+              </div>
+              <div>
+                <dt>Frontend</dt>
+                <dd>HTML5 / CSS3 · Vanilla JS · DOM API · Keyboard Events · LocalStorage</dd>
+              </div>
+              <div>
+                <dt>Tools</dt>
+                <dd>Git / GitHub · Markdown · AI Coding Agent · Python（脚本）· C++（课程级）</dd>
+              </div>
+              <div>
+                <dt>Mathematics</dt>
+                <dd>线性代数 · 多元微积分 · 概率统计 · 把结构讲清楚</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 / Work -->
+    <section class="section work" id="work" data-section="work" aria-labelledby="work-title">
+      <span class="halftone" aria-hidden="true"></span>
+      <svg class="star star--work" aria-hidden="true"><use href="#star4"/></svg>
+
+      <div class="section-inner">
+        <header class="section-head">
+          <span class="section-index" aria-hidden="true">03</span>
+          <div>
+            <p class="section-kicker">Selected Work / 项目成果</p>
+            <h2 id="work-title">从界面，<br>到可复用的 Agent Skill。</h2>
+            <p class="section-en" lang="en">Two layers of the same problem.</p>
+          </div>
+        </header>
+
+        <div class="section-body">
+          <p class="work-lede">
+            同一个写作场景，两个不同层级的交付：一个验证产品交互，一个把改写规则写成模型可加载的 Skill。两者都还在原型 / 规范阶段，不是已上线的 Agent 服务。
+          </p>
+        </div>
+
+        <article class="project project--feature">
+          <div class="project-visual">
+            <div class="project-frame project-frame--dark">
+              <span class="demo-badge">INTERACTIVE DEMO · 规则版</span>
+              <svg class="star star--project" aria-hidden="true"><use href="#star4"/></svg>
+              <div class="browser">
+                <div class="browser-bar" aria-hidden="true">
+                  <span class="browser-dots"><i></i><i></i><i></i></span>
+                  <span class="browser-url">dse-writing-lab / paper-2 / rules-demo</span>
+                  <span class="browser-tag">NO LLM</span>
+                </div>
+                <div class="demo-embed">
+                  <iframe src="demo/writing-lab/marking.html" title="DSE Writing Lab 规则批改交互演示：可直接编辑作文、切换文体并查看改写与批注" loading="eager" referrerpolicy="no-referrer"></iframe>
+                </div>
+              </div>
+            </div>
+            <p class="figure-caption"><b>01</b> 可直接编辑作文、切换文体与批改强度；改写、批注、替换词同步更新。<strong>规则版演示，示例数据，无模型调用。</strong></p>
+            <div class="prototype-flags" aria-label="项目状态">
+              <span>LIVE DEMO</span><span>RULE-BASED</span><span>NO LLM</span>
+            </div>
+          </div>
+
+          <div class="project-info">
+            <div class="project-intro">
+              <div class="project-meta">
+                <span>Project 01</span><span>2026</span><span class="is-warn">Prototype</span>
+              </div>
+              <h3>DSE Writing Lab</h3>
+              <p class="project-sub" lang="en">AI 英语写作学习产品原型</p>
+              <p class="project-desc">
+                面向 HKDSE English Paper 2 写作学习场景，设计并开发英语改写与复习产品原型，覆盖改写结果展示、批注、替换词学习、个人词库和打字练习。下方嵌入的是规则批改页：可以直接编辑作文、切换文体与批改强度，即时生成改写版、批注和替换词；当前为本地规则与示例文本，未调用 LLM。
+              </p>
+              <ul class="project-highlights">
+                <li>原文、改写、批注、替换词四栏联动，支持文体与批改强度切换。</li>
+                <li>输入即时改写，标出语法修正与词汇 / 句式升级，可复制改写版。</li>
+                <li>替换词按语境给出候选，支持点词查看解释与本地词库流程。</li>
+              </ul>
+            </div>
+            <div class="project-detail">
+              <dl class="project-facts">
+                <dt>Role</dt><dd>产品设计与 AI Coding Agent 协作开发</dd>
+                <dt>Stack</dt><dd>HTML5 · CSS3 · Vanilla JS · DOM API · Keyboard Events · LocalStorage</dd>
+                <dt>Status</dt><dd>规则版交互演示可运行；LLM API 与独立部署规划中</dd>
+              </dl>
+              <ul class="tag-list" aria-label="项目标签">
+                <li>Product Prototype</li>
+                <li>AI-assisted Build</li>
+                <li>Writing UX</li>
+              </ul>
+              <div class="project-actions">
+                <button class="btn btn--ink" type="button" data-dialog="dlg-writing" aria-haspopup="dialog">项目说明 <span class="btn-mark" aria-hidden="true">+</span></button>
+                <a class="text-link" href="demo/writing-lab/marking.html" target="_blank" rel="noopener noreferrer">打开完整演示 <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project project--reverse">
+          <div class="project-visual">
+            <div class="code-panel" role="group" aria-label="DSE Writing Polish Skill 仓库结构预览：README.md、SKILL.md、references、examples">
+              <div class="code-top">
+                <span class="console-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="code-path">dse-writing-polish-skill</span>
+                <span class="code-state">SPEC ONLY</span>
+              </div>
+              <div class="code-window">
+                <div class="file-tree" aria-hidden="true">
+                  <span class="tree-label">FILES</span>
+                  <span class="tree-item">README.md</span>
+                  <span class="tree-item is-active">SKILL.md</span>
+                  <span class="tree-item">references/</span>
+                  <span class="tree-item">examples/</span>
+                </div>
+                <pre class="code-text" aria-hidden="true"><code><span class="c-key">name:</span> dse-writing-polish
+<span class="c-key">description:</span> Rewrite HKDSE English
+by genre and tone, preserve meaning.
+
+<span class="c-comment">## Core rules</span>
+<span class="c-line">- preserve stance, facts, examples</span>
+<span class="c-line">- do not invent data or sources</span>
+<span class="c-line">- explain vocabulary in context</span>
+
+<span class="c-comment">## Workflow</span>
+<span class="c-num">1.</span> identify genre / audience / tone
+<span class="c-num">2.</span> preserve the core claim
+<span class="c-num">3.</span> rewrite + explain 2–5 changes</code></pre>
+              </div>
+              <div class="code-foot">
+                <span>4 FILES</span>
+                <span>0 RUNTIME</span>
+                <span>OPEN SOURCE</span>
+              </div>
+            </div>
+            <p class="figure-caption"><b>02</b> 公开的 Skill 规范：行为边界、文体规则与输出结构。</p>
+            <div class="prototype-flags" aria-label="项目状态">
+              <span>PROMPT SPEC</span><span>NO RUNTIME</span><span>OPEN SOURCE</span>
+            </div>
+          </div>
+
+          <div class="project-info">
+            <div class="project-intro">
+              <div class="project-meta">
+                <span>Project 02</span><span>2026</span><span class="is-spec">Skill Spec</span>
+              </div>
+              <h3>DSE Writing Polish</h3>
+              <p class="project-sub" lang="en">跨平台 AI 写作 Skill</p>
+              <p class="project-desc">
+                面向 HKDSE 英文写作练习，设计并发布可被 AI 助手加载的写作改写 Skill，支持按文体、读者和语气改写英文句段，并提供带语境说明的替换词建议。当前是可复用的指令与工作流定义，不是已经部署的自主 Agent 服务，也不提供作文评分。
+              </p>
+              <ul class="project-highlights">
+                <li>流程：信息确认 → 文体 / 语气适配 → 改写 → 词汇解释 → 质量检查。</li>
+                <li>边界：保留立场、事实与例子；禁止虚构数据、引用或更强的结论。</li>
+                <li>覆盖 article、letter、email、report、speech、essay 等文体。</li>
+              </ul>
+            </div>
+            <div class="project-detail">
+              <dl class="project-facts">
+                <dt>Role</dt><dd>独立设计与开发</dd>
+                <dt>Stack</dt><dd>Prompt Engineering · Markdown · Git / GitHub · Claude / Codex 兼容 Skill 格式</dd>
+                <dt>Status</dt><dd>公开规范仓库 / 非 Agent 服务</dd>
+              </dl>
+              <ul class="tag-list" aria-label="项目标签">
+                <li>Prompt Engineering</li>
+                <li>Skill Design</li>
+                <li>Constraint Design</li>
+              </ul>
+              <div class="project-actions">
+                <button class="btn btn--ink" type="button" data-dialog="dlg-skill" aria-haspopup="dialog">项目说明 <span class="btn-mark" aria-hidden="true">+</span></button>
+                <a class="text-link" href="https://github.com/novemberschopin11mapleleave-design/dse-writing-polish-skill" target="_blank" rel="noopener noreferrer">GitHub 仓库 <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="also">
+          <div class="also-head">
+            <span>Also shipped / 其他交付</span>
+            <p>不一定是 AI 项目，但都是真实发生过的工程练习。</p>
+          </div>
+          <ul class="also-list">
+            <li>
+              <span class="also-year">2025—26</span>
+              <h4>Linear Algebra, Visualized</h4>
+              <p>用两组中文标注的图解释特征向量与秩亏；用于 MATH2121 复习与补习讲解。</p>
+            </li>
+            <li>
+              <span class="also-year">2026</span>
+              <h4>DSE English Archive</h4>
+              <p>把 61 份 Markdown 单一源整理成 34 份 DOCX 与 7 份 PDF；Python 统一生成、去重与结构校验。</p>
+            </li>
+            <li>
+              <span class="also-year">2026</span>
+              <h4>This portfolio</h4>
+              <p>手写 HTML / CSS / JS；设计、文案与实现由 AI Coding Agent 辅助，关键选择逐项人工确认。</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="work-github">
+          <a class="text-link" href="https://github.com/novemberschopin11mapleleave-design" target="_blank" rel="noopener noreferrer">更多代码与实验 · GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 / Contribution -->
+    <section class="section contribute" id="contribute" data-section="contribute" aria-labelledby="contribute-title">
+      <svg class="star star--section" aria-hidden="true"><use href="#star4"/></svg>
+
+      <div class="section-inner">
+        <header class="section-head">
+          <span class="section-index" aria-hidden="true">04</span>
+          <div>
+            <p class="section-kicker">What I Bring / 我能贡献什么</p>
+            <h2 id="contribute-title">先把边界画清楚，<br>再让 Agent 跑起来。</h2>
+            <p class="section-en" lang="en">Boundaries before autonomy.</p>
+          </div>
+        </header>
+
+        <div class="section-body">
+          <p class="contribute-lede">
+            我还在补服务端与 Agent runtime 的工程能力，但我已经习惯先把任务拆清楚、把失败路径写出来、把原型做出来给人用。对 AI Agent 团队，我能先贡献工作流、约束与可验证的原型。
+          </p>
+        </div>
+
+        <div class="contribution-grid">
+          <article class="contribution">
+            <span class="contribution-k">01 / Workflow</span>
+            <h3>把模糊任务<br>拆成可执行步骤</h3>
+            <p>先问清楚输入、上下文、输出契约和人工确认点，再决定模型该在哪一步做什么。这样团队能更早发现错误假设，而不是等 Agent 跑偏后返工。</p>
+            <p class="evidence">证据：DSE Writing Polish 把写作任务拆成信息确认、文体适配、改写、词汇解释与质量检查。</p>
+          </article>
+          <article class="contribution">
+            <span class="contribution-k">02 / Constraint</span>
+            <h3>给模型<br>装上边界</h3>
+            <p>用规则约束模型保留事实与立场、不虚构数据、不越过评分边界；把语法错误、表达建议和风格选择分开。约束不是限制能力，是让结果可核对。</p>
+            <p class="evidence">证据：SKILL.md 的核心规则与 quality checks；下一步接结构化输出与失败样例评测。</p>
+          </article>
+          <article class="contribution">
+            <span class="contribution-k">03 / Prototype</span>
+            <h3>用 AI<br>快速做出可验证原型</h3>
+            <p>用 AI Coding Agent 协作实现界面与交互，在真实浏览器里验证流程；先做能被人使用的最小闭环，再判断是否值得接 LLM 与服务端。</p>
+            <p class="evidence">证据：DSE Writing Lab 前端原型：多栏对照、打字练习、词库与本地存储。</p>
+          </article>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-head">
+            <h3>如果加入一个 Agent 团队，<br>前 90 天我会这样开始。</h3>
+            <p>不是入职计划，是一种工作顺序：先理解，再交付，最后让团队能继续。</p>
+          </div>
+          <ol>
+            <li>
+              <span class="timeline-num">01</span>
+              <div>
+                <h4>前两周 / Listen</h4>
+                <p>读 Prompt、工具定义、评测集与失败样例；先复现当前最贵的错误，不急着提新架构。</p>
+              </div>
+            </li>
+            <li>
+              <span class="timeline-num">02</span>
+              <div>
+                <h4>第 3–6 周 / Ship</h4>
+                <p>交付一个受约束的 Skill 或工具节点，配一组可复现的评测与降级路径；小到能 review，完整到能上线试。</p>
+              </div>
+            </li>
+            <li>
+              <span class="timeline-num">03</span>
+              <div>
+                <h4>第 7–12 周 / Hand off</h4>
+                <p>补文档、失败样本与指标，把「我做了」变成「团队能继续做」。这也是我对实习最重要的期待：留下可复用的东西。</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="contact">
+          <div class="contact-copy">
+            <p class="contact-kicker">Open to AI Agent internships</p>
+            <h2>一起把 Agent<br>做得更可靠。</h2>
+            <p class="contact-desc">有 AI Agent / AI 应用实习机会，或者想聊聊工作流、约束与评测，欢迎来信。完整简历可邮件索取。</p>
+          </div>
+          <div class="contact-actions">
+            <span class="contact-label">Email</span>
+            <a class="contact-mail" href="mailto:novemberschopin.11.mapleleave@gmail.com">novemberschopin.11.mapleleave@gmail.com</a>
+            <div class="contact-buttons">
+              <button class="btn btn--light copy-btn" type="button" data-copy="novemberschopin.11.mapleleave@gmail.com">复制邮箱</button>
+              <a class="btn btn--light copy-btn" href="mailto:novemberschopin.11.mapleleave@gmail.com?subject=CV%20request%20%2F%20%E6%9D%A5%E8%87%AA%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5">索取简历</a>
+            </div>
+            <p class="copy-status" data-copy-status aria-live="polite"></p>
+            <div class="contact-links">
+              <a href="https://github.com/novemberschopin11mapleleave-design" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+              <a href="https://github.com/novemberschopin11mapleleave-design/dse-writing-polish-skill" target="_blank" rel="noopener noreferrer">Writing Skill <span aria-hidden="true">↗</span></a>
+              <a href="#cover">Back to top <span aria-hidden="true">↑</span></a>
+            </div>
+          </div>
+          <svg class="star star--contact" aria-hidden="true"><use href="#star4"/></svg>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2026 张文昕 Wenxin Zhang</span>
+    <span>Human directed. AI assisted. Built by hand.</span>
+  </footer>
+
+  <!-- Project dialog: DSE Writing Lab -->
+  <dialog class="modal" id="dlg-writing" aria-labelledby="dlg-writing-title">
+    <div class="modal-shell">
+      <form method="dialog" class="modal-close-form">
+        <button class="modal-close" type="submit" aria-label="关闭 DSE Writing Lab 项目说明">
+          <svg aria-hidden="true"><use href="#close-icon"/></svg>
+        </button>
+      </form>
+      <p class="modal-kicker">Project 01 / DSE Writing Lab / Prototype</p>
+      <h2 id="dlg-writing-title">先把学习流程，<br>做成可以用的界面。</h2>
+      <p class="modal-lead">
+        这是 AI 英语写作学习产品的规则批改前端。下方嵌入的批改页可以直接编辑作文、切换文体与批改强度，并即时生成改写、批注和替换词；当前使用示例文本与本地规则，没有调用 LLM，也不是 Agent 系统。
+      </p>
+
+      <div class="modal-grid">
+        <section>
+          <h3>The problem</h3>
+          <p>写作学习的反馈往往散落在「原文、改写、批注、替换词、复习」几个环节里。通用语法工具不按 DSE 写作场景组织，学生看到了改动，却不知道下一步该练什么。</p>
+        </section>
+        <section>
+          <h3>The approach</h3>
+          <p>把流程拆成原文与改写对照、错误说明、替换表达、个人词库和打字练习；做多栏界面与文体 / 强度选项。页面与交互由 AI Coding Agent 辅助实现和迭代，再在真实浏览器里逐项验证。</p>
+        </section>
+        <section>
+          <h3>The result</h3>
+          <p>规则批改页可交互：编辑原文、切换文体 / 强度、查看语法修正与词汇升级、复制改写版；词库与练习流程在本地存储中完成。当前是示例文本，没有真实模型调用，也没有独立线上部署。</p>
+        </section>
+        <section>
+          <h3>Next</h3>
+          <p>如果要继续，会先接服务端 API 与 LLM，约束结构化输出，再做基础评测、账户与云端部署；在这些完成之前，不把它写成「已接入 LLM」。</p>
+        </section>
+      </div>
+
+      <dl class="modal-meta">
+        <dt>Role</dt><dd>产品设计与 AI Coding Agent 协作开发</dd>
+        <dt>Stack</dt><dd>HTML5 · CSS3 · 原生 JavaScript · DOM API · Keyboard Events · LocalStorage · AI Coding Agent</dd>
+        <dt>Status</dt><dd>规则版交互演示可运行；LLM API 与独立部署规划中</dd>
+      </dl>
+      <p class="modal-note">嵌入页中的「改写 / 批注 / 替换词」来自本地规则，不是 AI 精批。完整演示可在新窗口打开。</p>
+      <div class="modal-actions">
+        <a class="text-link" href="demo/writing-lab/marking.html" target="_blank" rel="noopener noreferrer">打开完整演示 <span aria-hidden="true">↗</span></a>
+        <button class="text-link" type="button" data-close>关闭说明</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Project dialog: DSE Writing Polish -->
+  <dialog class="modal" id="dlg-skill" aria-labelledby="dlg-skill-title">
+    <div class="modal-shell">
+      <form method="dialog" class="modal-close-form">
+        <button class="modal-close" type="submit" aria-label="关闭 DSE Writing Polish 项目说明">
+          <svg aria-hidden="true"><use href="#close-icon"/></svg>
+        </button>
+      </form>
+      <p class="modal-kicker">Project 02 / DSE Writing Polish / Skill Spec</p>
+      <h2 id="dlg-skill-title">把改写规则，<br>写成 Agent 能加载的 Skill。</h2>
+      <p class="modal-lead">
+        这是一个平台无关的写作改写 Skill：定义输入、行为边界、文体适配、词汇解释与输出格式。它是可复用的指令与工作流，不是已部署的自主 Agent 服务，也不提供作文评分。
+      </p>
+
+      <div class="modal-grid">
+        <section>
+          <h3>The problem</h3>
+          <p>通用改写容易改掉原意、立场或学生自己的声音；只给同义词列表，也无法告诉学生某个词在具体句子里是否自然。模型需要明确的行为边界。</p>
+        </section>
+        <section>
+          <h3>The approach</h3>
+          <p>把 Skill 拆成必需输入、保留原意、文体与语气适配、语境化词汇建议、默认输出格式和质量检查。明确禁止虚构数据、引用或更强的结论。</p>
+        </section>
+        <section>
+          <h3>The result</h3>
+          <p>公开的 GitHub 仓库，包含 README、SKILL.md、风格参考与改写示例；可被 Claude Code、Codex 或其他兼容 harness 加载。当前没有运行时服务，也没有评分能力。</p>
+        </section>
+        <section>
+          <h3>Next</h3>
+          <p>把它接进真实应用：调用 LLM API、约束结构化输出、记录失败样例并做基础评测；如果要做 Agent，再补工具调用与人工确认节点。</p>
+        </section>
+      </div>
+
+      <dl class="modal-meta">
+        <dt>Role</dt><dd>独立设计与开发</dd>
+        <dt>Stack</dt><dd>Prompt Engineering · Markdown · GitHub · Claude / Codex 兼容 Skill 格式</dd>
+        <dt>Scope</dt><dd>可复用指令与工作流定义；不是 Agent 服务，不提供评分</dd>
+      </dl>
+      <p class="modal-note">仓库说明：<a href="https://github.com/novemberschopin11mapleleave-design/dse-writing-polish-skill" target="_blank" rel="noopener noreferrer">github.com/novemberschopin11mapleleave-design/dse-writing-polish-skill</a></p>
+      <div class="modal-actions">
+        <a class="btn btn--ink" href="https://github.com/novemberschopin11mapleleave-design/dse-writing-polish-skill" target="_blank" rel="noopener noreferrer">打开 GitHub 仓库 <span aria-hidden="true">↗</span></a>
+        <button class="text-link" type="button" data-close>关闭说明</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="assets/script.js" defer></script>
+</body>
+</html>
